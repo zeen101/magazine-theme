@@ -481,7 +481,7 @@ html {
 body {
 	font-size: 14px;
 	font-size: 1rem;
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: "Palatino Linotype",Palatino,Palladio,"URW Palladio L","Book Antiqua",Baskerville,"Bookman Old Style","Bitstream Charter","Nimbus Roman No9 L",Garamond,"Apple Garamond","ITC Garamond Narrow","New Century Schoolbook","Century Schoolbook","Century Schoolbook L",Georgia,serif
 	text-rendering: optimizeLegibility;
 	color: #444;
 }
@@ -1785,15 +1785,4 @@ img#wpstats {
 		margin-left: 50px;
 		margin-left: 3.57142857rem;
 	}
-}
-
-/* =IssueM Specific Styles
------------------------------------------------ */
-.issuem_title {
-	color: #AAAAAA;
-    font: 12px "Lucida Grande",arial,helvetica,sans-serif;
-	background: url("http://www.simmons.edu/ssw/c/fe/i/bg-issuebanner.gif") no-repeat scroll center 0 transparent;
-    margin: 0 0 30px -20px;
-    text-align: center;
-    text-transform: uppercase;
 }

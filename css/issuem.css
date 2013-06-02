@@ -1,0 +1,180 @@
+/* =IssueM Specific Styles
+----------------------------------------------- */
+.issuem_title {
+	color: #AAAAAA;
+    font: 12px "Lucida Grande",arial,helvetica,sans-serif;
+	background: url( '../images/bg-issuebanner.gif' ) no-repeat scroll center 0 transparent;
+    margin: 0 0 30px;
+    text-align: center;
+    text-transform: uppercase;
+	width: auto;
+}
+
+.issuem_archives_shortcode {
+	display: table;
+	table-layout: fixed;
+}
+
+.issuem_archives_shortcode .issuem_archive {
+	display: table-cell;
+	float: left;
+	border: 1px solid transparent;
+	margin-left: 40px;
+	margin-right: 40px;
+	margin-bottom: 20px;
+	text-align: center;
+	
+}
+
+.issuem_archives_shortcode .issuem_issue_draft {
+	background: #FCF;
+	border: 1px solid #F0F;
+}
+
+
+#issuem-featured-article-slideshowholder {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	margin-bottom: 25px;
+	border: 1px solid black;
+}
+
+#issuem-featured-article-slideshowholder .ft-title {
+	padding-left: 5px; 
+	padding-right: 5px;
+    font-weight: bold;
+	line-height: 12pt;
+}
+
+#issuem-featured-article-thumbs-imageholder {
+	margin-left: auto;
+	margin-right: auto;	
+	margin-bottom: 25px;
+	text-align: center;
+}
+
+h3.featured-thumb-title {
+	margin: 0;
+}
+
+.issuem-featured-article-thumbs-image {
+	display: inline-block;
+	margin-left: 30px;
+	margin-right: 30px;
+	vertical-align: top;
+}
+
+.issuem-featured-article-thumbs-image img {
+	border: 1px solid black;
+}
+
+.featured-thumb-title {
+	display: block;
+	text-align: center;	
+	clear: both;
+	color: #0D4880;
+}
+
+.featured-thumb-content {
+	display: block;
+	text-align: center;	
+	clear: both;
+    line-height: 1;
+    padding-top: 0;
+}
+
+.featured-thumb-byline {
+	display: block;
+	text-align: center;	
+	clear: both;
+	line-height: 12pt;
+	text-transform: uppercase;
+}
+
+.issuem_active_list_widget {
+	text-align: center;
+}
+
+p.issuem_widget_issue_name {
+	margin: 0;
+	font-weight: bold;
+}
+
+p.issuem_widget_issue_cover_image {
+	margin: 0;	
+}
+
+p a.issuem_widget_issue_pdf_link {
+	margin: 0;	
+}
+
+.issuem_article_list_widget p {
+	margin: 0;
+	line-height: 14pt;
+}
+
+.issuem_article_list_widget .issuem_widget_category {
+	color: #D76A2A;
+    margin: 15px 0 0;
+    padding: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.issuem_article_list_widget .issuem_widget_link {
+	color: #0D4980;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.issuem_article_list_widget #current_article .issuem_widget_link {
+	font-weight: bold;
+	color: inherit;
+}
+
+.issuem_article_list_widget .issuem_widget_teaser {
+    line-height: 1;
+    margin-top: 0;
+    padding-top: 0;
+    text-align: center;
+}
+
+.issuem_articles_shortcode .issuem_article {
+	margin-bottom: 50px;
+}
+
+.issuem_articles_shortcode .issuem_article_category {
+    background: url("../images/bg-sectionheader.gif") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    color: #FFFFFF;
+    font-family: "Lucida Grande",arial,helvetica,sans-serif;
+    margin: 0 0 0 -40px;
+    padding: 10px 0 20px 30px;
+    text-transform: uppercase;
+	height: 39px;
+	width: 249px;
+	display: block;
+	font-weight: bold;
+}
+
+.issuem_articles_shortcode .issuem_article_title,
+.issuem_articles_shortcode .issuem_article_byline {
+	margin-bottom: 0px;	
+}
+
+.issuem_articles_shortcode .issuem_article_link {
+	font-size: 2em;
+    color: #333333;
+	text-decoration: none;
+}
+.issuem_articles_shortcode .issuem_article_link:hover {
+    color: #333333;
+	text-decoration: underline;
+}
+
+.issuem_articles_shortcode .issuem_article_content {
+	font-size: 1.4em;
+    line-height: 1.4em;
+}
