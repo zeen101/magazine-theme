@@ -715,6 +715,10 @@ footer[role="contentinfo"] a:hover {
 	margin-bottom: 1.714285714rem;
 }
 .entry-header img.wp-post-image {
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
 	margin-bottom: 24px;
 	margin-bottom: 1.714285714rem;
 }

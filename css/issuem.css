@@ -178,3 +178,26 @@ p a.issuem_widget_issue_pdf_link {
 	font-size: 1.4em;
     line-height: 1.4em;
 }
+
+article.issuem-article .entry-title {
+	border-bottom: 1px solid #666666;
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+	font-size: 2em;
+	font-weight: bold;
+}
+
+article.issuem-article .entry-meta {
+	font-style: italic;
+    list-style-type: none;
+    margin: 0 0 40px 0;
+}
+
+article.issuem-article .entry-meta a {
+	color: #4587C4;
+    text-decoration: none;
+}
+article.issuem-article .entry-meta a:hover {
+	color: #CC4222;
+    text-decoration: underline;
+}

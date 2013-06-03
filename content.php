@@ -1,8 +1,6 @@
 <?php
 /**
- * The default template for displaying content. Used for both single and index/archive/search.
- *
- * @package IssueM Magazine
+ * @package IssueM Magazine Theme
  * @since 1.0.0
  */
 ?>
@@ -14,7 +12,7 @@
 		</div>
 		<?php endif; ?>
 		<header class="entry-header">
-			<?php the_post_thumbnail(); ?>
+			<?php the_post_thumbnail( 'article-feature' ); ?>
 			<?php if ( is_single() ) : ?>
 			<h1 class="entry-title"><?php the_title(); ?></h1>
 			<?php else : ?>

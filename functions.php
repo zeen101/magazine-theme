@@ -73,7 +73,7 @@ if ( ! function_exists( 'issuem_magazine_setup' ) ) {
 		set_post_thumbnail_size( 150, 150, true );
 	
 		// Used for article feature images.
-		add_image_size( 'article-feature', 600, 375, true );
+		add_image_size( 'article-feature', 625, 375, true );
 		// Used for large feature front-page images.
 		add_image_size( 'large-feature', 450, 275, true );
 		// Used for small feature front-page images.
@@ -340,5 +340,35 @@ if ( !function_exists( 'include_issuem_articles' ) ) {
 					
 	}
 	add_action( 'pre_get_posts', 'include_issuem_articles' );
+	
+}
+
+if ( !function_exists( 'issuem_magazine_article_meta' ) ) {
+
+	function issuem_magazine_article_meta() {
+	
+		global $post;
+		
+		$issues = get_the_terms( $post->ID, 'issuem_issue' );
+		foreach( $issues as $issue ) {
+		
+			$issue_list[] = '<a href="' . add_query_arg( 'issue', $issue->slug, '/' ) . '">' . $issue->name . '</a>';
+			
+		}
+		$article_issue = join( ' | ', $issue_list );
+		echo $article_issue . ' | ';
+		
+		$issuem_settings = get_issuem_settings();
+		if ( !empty( $issuem_settings['use_wp_taxonomies'] ) )
+			$article_categories = get_the_term_list( $post->ID, 'category', '', ', ', ' | ' );
+		else
+			$article_categories = get_the_term_list( $post->ID, 'issuem_issue_categories', '', ', ', ' | ' );
+		
+		if ( '' != $article_categories )
+			echo $article_categories;
+			
+		echo get_the_date();
+	
+	}
 	
 }
