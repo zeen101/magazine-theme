@@ -33,6 +33,7 @@ define( 'ISSUEM_MAGAZINE_THEME_REL_DIR', 	dirname( ISSUEM_MAGAZINE_THEME_BASENAM
  */
 if ( ! isset( $content_width ) )
 	$content_width = 625;
+	
 
 if ( ! function_exists( 'issuem_magazine_setup' ) ) {
 
@@ -84,9 +85,78 @@ if ( ! function_exists( 'issuem_magazine_setup' ) ) {
 		//We want to use our own scripts
 		add_filter( 'enqueue_issuem_styles', '__return_false' );
 
+		add_filter( 'pre_set_site_transient_update_themes', 'issuem_magazine_update' );
 		
+		if ( is_admin() ) {
+			
+			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			if ( !is_plugin_active( 'issuem/issuem.php' ) ) {
+				
+				add_action( 'admin_notices', 'activate_issuem_admin_notice' );
+				
+			}
+			
+		}
+		
+		if ( !function_exists( 'activate_issuem_admin_notice' ) ) {
+		
+			/**
+			 * Helper function used print error nag if IssueM is not activated
+			 *
+			 * @since 1.0.0
+			 */
+			function activate_issuem_admin_notice() {
+			
+				?>
+				
+				<div class="error">
+					<p><?php _e( "Error! You must have the IssueM plugin activated to use IssueM's Magazine Theme.", 'issuem-magazine' ); ?></p>
+				</div>
+				
+				<?php
+				
+			}
+			
+		}
+
 	}
 	add_action( 'after_setup_theme', 'issuem_magazine_setup' );
+	
+}
+
+/**
+ * Enables Theme Update via the WordPress Update API
+ * 
+ * @since 1.0.0
+ *
+ * @param object $transient Transient object of theme updates
+ */
+function issuem_magazine_update( $transient ) {
+
+	// Check if the transient contains the 'checked' information
+	// If no, just return its value without hacking it
+	if ( empty( $transient->checked ) )
+		return $transient;
+
+	// The transient contains the 'checked' information
+	// Now append to it information form your own API
+	$theme_slug = ISSUEM_MAGAZINE_THEME_SLUG;
+		
+	// POST data to send to your API
+	$args = array(
+		'action' 		=> 'check-latest-version',
+		'theme_slug' 	=> $theme_slug
+	);
+	
+	// Send request checking for an update
+	$response = issuem_api_request( $args );
+					
+	// If there is a new version, modify the transient
+	if ( isset( $response->new_version ) )
+		if( version_compare( $response->new_version, $transient->checked[ISSUEM_MAGAZINE_THEME_SLUG], '>' ) )
+			$transient->response[ISSUEM_MAGAZINE_THEME_SLUG] = (array)$response;
+	
+	return $transient;
 	
 }
 
