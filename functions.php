@@ -418,6 +418,12 @@ if ( !function_exists( 'issuem_magazine_article_meta' ) ) {
 	function issuem_magazine_article_meta() {
 	
 		global $post;
+
+		$author_name = get_the_author_meta( 'display_name' );
+
+		$byline = sprintf( __( 'By %s | ', 'issuem' ), apply_filters( 'issuem_author_name', $author_name, $post->ID ) );
+
+		echo $byline;
 		
 		$issues = get_the_terms( $post->ID, 'issuem_issue' );
 		foreach( $issues as $issue ) {

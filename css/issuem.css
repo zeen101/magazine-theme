@@ -37,7 +37,7 @@
 	margin-right: auto;
 	display: block;
 	margin-bottom: 25px;
-	border: 1px solid black;
+	border: 1px solid #ddd;
 }
 
 #issuem-featured-article-slideshowholder .ft-title {
@@ -66,7 +66,7 @@ h3.featured-thumb-title {
 }
 
 .issuem-featured-article-thumbs-image img {
-	border: 1px solid black;
+	border: 1px solid #ddd;
 }
 
 .featured-thumb-title {

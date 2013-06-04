@@ -172,6 +172,12 @@ img {
 	content: "";
 }
 
+/* =Fonts
+-------------------------------------------------------------- */
+
+@import url(http://fonts.googleapis.com/css?family=PT+Serif);
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+
 
 /* =Repeatable patterns
 -------------------------------------------------------------- */
@@ -481,7 +487,7 @@ html {
 body {
 	font-size: 14px;
 	font-size: 1rem;
-	font-family: "Palatino Linotype",Palatino,Palladio,"URW Palladio L","Book Antiqua",Baskerville,"Bookman Old Style","Bitstream Charter","Nimbus Roman No9 L",Garamond,"Apple Garamond","ITC Garamond Narrow","New Century Schoolbook","Century Schoolbook","Century Schoolbook L",Georgia,serif
+	font-family: 'PT Serif',Georgia,serif;
 	text-rendering: optimizeLegibility;
 	color: #444;
 }
@@ -557,8 +563,8 @@ header hgroup,
 }
 .site-header h1 a,
 .site-header h2 a {
-
-	color: #515151;
+	font-family: 'Droid Sans', sans-serif;
+	color: #eee;
 	display: inline-block;
 	text-decoration: none;
 }
@@ -1520,6 +1526,7 @@ img#wpstats {
 	.footer-navigation ul {
 		margin: 0;
 		text-indent: 0;
+		font-family: 'Droid Sans', sans-serif;
 	}
 	.header-navigation li a,
 	.header-navigation li,
