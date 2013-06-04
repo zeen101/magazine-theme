@@ -196,6 +196,7 @@ img {
 	color: #636363;
 }
 
+
 /* Shared Post Format styling */
 article.format-quote footer.entry-meta,
 article.format-link footer.entry-meta,
@@ -834,6 +835,7 @@ article.sticky .featured-post {
 	margin: 0 0 24px;
 	margin: 0 0 1.714285714rem;
 	line-height: 1.714285714;
+	font-size: 1.4em;
 }
 .entry-content ol,
 .comment-content ol,

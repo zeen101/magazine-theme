@@ -2,7 +2,7 @@
 ----------------------------------------------- */
 .issuem_title {
 	color: #AAAAAA;
-    font: 12px "Lucida Grande",arial,helvetica,sans-serif;
+    font: 12px 'Droid Sans', "Lucida Grande",arial,helvetica,sans-serif;
 	background: url( '../images/bg-issuebanner.gif' ) no-repeat scroll center 0 transparent;
     margin: 0 0 30px;
     text-align: center;
@@ -55,7 +55,18 @@
 }
 
 h3.featured-thumb-title {
-	margin: 0;
+	margin: 0 0 10px 0;
+	line-height: 1.54615;
+	font-family: 'Droid Sans', sans-serif;
+	font-size: 1.04286rem;
+}
+
+h3.featured-thumb-title a {
+	text-decoration: none;
+}
+
+h3.featured-thumb-title a:hover {
+	text-decoration: underline;
 }
 
 .issuem-featured-article-thumbs-image {
@@ -82,6 +93,9 @@ h3.featured-thumb-title {
 	clear: both;
     line-height: 1;
     padding-top: 0;
+    
+    margin-bottom: 10px;
+     color: #333;
 }
 
 .featured-thumb-byline {
@@ -90,6 +104,7 @@ h3.featured-thumb-title {
 	clear: both;
 	line-height: 12pt;
 	text-transform: uppercase;
+	color: #999;
 }
 
 .issuem_active_list_widget {
@@ -115,7 +130,7 @@ p a.issuem_widget_issue_pdf_link {
 }
 
 .issuem_article_list_widget .issuem_widget_category {
-	color: #D76A2A;
+	color: #d6492a;
     margin: 15px 0 0;
     padding: 0;
     text-align: center;
@@ -149,14 +164,14 @@ p a.issuem_widget_issue_pdf_link {
     background: url("../images/bg-sectionheader.gif") no-repeat scroll 0 0 transparent;
     border: medium none;
     color: #FFFFFF;
-    font-family: "Lucida Grande",arial,helvetica,sans-serif;
+    font-family: 'Droid Sans', "Lucida Grande",arial,helvetica,sans-serif;
     margin: 0 0 0 -40px;
-    padding: 10px 0 20px 30px;
+    padding: 8px 0 20px 30px;
     text-transform: uppercase;
 	height: 39px;
 	width: 249px;
 	display: block;
-	font-weight: bold;
+	font-size: 1em;
 }
 
 .issuem_articles_shortcode .issuem_article_title,
@@ -165,8 +180,8 @@ p a.issuem_widget_issue_pdf_link {
 }
 
 .issuem_articles_shortcode .issuem_article_link {
-	font-size: 2em;
-    color: #333333;
+	font-size: 1.5em;
+    color: #21759B;
 	text-decoration: none;
 }
 .issuem_articles_shortcode .issuem_article_link:hover {
@@ -180,7 +195,7 @@ p a.issuem_widget_issue_pdf_link {
 }
 
 article.issuem-article .entry-title {
-	border-bottom: 1px solid #666666;
+	border-bottom: 1px solid #ddd;
     margin-bottom: 10px;
     padding-bottom: 15px;
 	font-size: 2em;
@@ -200,4 +215,10 @@ article.issuem-article .entry-meta a {
 article.issuem-article .entry-meta a:hover {
 	color: #CC4222;
     text-decoration: underline;
+}
+
+#issuem-featured-article-slideshowholder .flex-caption {
+	width: 100% !important;
+	padding: 3px 3px 3px 10px;
+	font-family: 'Droid Sans', sans-serif;
 }
