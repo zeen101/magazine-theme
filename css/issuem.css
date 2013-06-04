@@ -91,11 +91,11 @@ h3.featured-thumb-title a:hover {
 	display: block;
 	text-align: center;	
 	clear: both;
-    line-height: 1;
+    line-height: 1.2;
     padding-top: 0;
-    
+    font-family: 'Droid Sans', "Lucida Grande",arial,helvetica,sans-serif;
     margin-bottom: 10px;
-     color: #333;
+     color: #666;
 }
 
 .featured-thumb-byline {
@@ -109,11 +109,15 @@ h3.featured-thumb-title a:hover {
 
 .issuem_active_list_widget {
 	text-align: center;
+
 }
 
-p.issuem_widget_issue_name {
-	margin: 0;
+.issuem_active_list_widget p.issuem_widget_issue_name {
+	margin: 0 0 10px 0;
 	font-weight: bold;
+	font-family: 'Droid Sans', "Lucida Grande",arial,helvetica,sans-serif;
+	font-size: 1.3em;
+	color: #d6492a;
 }
 
 p.issuem_widget_issue_cover_image {
@@ -124,36 +128,48 @@ p a.issuem_widget_issue_pdf_link {
 	margin: 0;	
 }
 
+.issuem_article_list_widget .article_list {
+	margin-bottom: 20px;
+}
+
 .issuem_article_list_widget p {
 	margin: 0;
 	line-height: 14pt;
+	font-family: 'Droid Sans', "Lucida Grande",arial,helvetica,sans-serif;
 }
 
-.issuem_article_list_widget .issuem_widget_category {
-	color: #d6492a;
+.issuem_article_list_widget p.issuem_widget_category {
+	color: #666;
     margin: 15px 0 0;
     padding: 0;
-    text-align: center;
     text-transform: uppercase;
+
 }
 
-.issuem_article_list_widget .issuem_widget_link {
-	color: #0D4980;
+.issuem_article_list_widget .article_list p {
+	margin: 0;
+}
+
+.issuem_article_list_widget p .issuem_widget_link {
+	color: #21759B;
     margin: 0;
     padding: 0;
     text-align: center;
+    text-decoration: none;
 }
+
+
 
 .issuem_article_list_widget #current_article .issuem_widget_link {
 	font-weight: bold;
-	color: inherit;
+	color: #0D4980;
 }
 
 .issuem_article_list_widget .issuem_widget_teaser {
     line-height: 1;
     margin-top: 0;
     padding-top: 0;
-    text-align: center;
+    text-align: left;
 }
 
 .issuem_articles_shortcode .issuem_article {

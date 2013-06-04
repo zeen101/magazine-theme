@@ -197,6 +197,7 @@ img {
 }
 
 
+
 /* Shared Post Format styling */
 article.format-quote footer.entry-meta,
 article.format-link footer.entry-meta,
@@ -652,6 +653,10 @@ section[role="banner"] {
 .widget-area .widget h3 {
 	margin-bottom: 24px;
 	margin-bottom: 1.714285714rem;
+	font-size: 1.4em;
+	font-family: 'Droid Sans', sans-serif;
+	color: #333;
+	text-transform: none;
 }
 .widget-area .widget p,
 .widget-area .widget li,
