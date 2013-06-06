@@ -27,6 +27,7 @@ add_filter( 'excerpt_more', 'issuem_article_excerpt_more' );
 		} else {
 			$article_format = <<<END
 <p class="issuem_article_category">%CATEGORY[1]%</p>
+<div class="issuem_article_thumb">%ISSUEM_FEATURE_THUMB%</div>
 <p class="issuem_article_title"><a class="issuem_article_link" href="%URL%">%TITLE%</a></p>
 <p class="issuem_article_byline">%BYLINE%</p>
 <p class="issuem_article_content">%EXCERPT%</p>
