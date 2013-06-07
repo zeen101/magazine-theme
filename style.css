@@ -717,6 +717,18 @@ footer[role="contentinfo"] a:hover {
 	color: #21759b;
 }
 
+#footer-widget-area aside {
+	margin-bottom: 1.71429rem;
+}
+
+#footer-widget-area .widget-title {
+	color: #333;
+	font-family: 'Droid Sans', sans-serif;
+	font-size: 1.4em;
+	margin-bottom: 1.71429rem;
+	text-transform: none;
+}
+
 
 /* =Main content and comment content
 -------------------------------------------------------------- */
@@ -1502,18 +1514,34 @@ img#wpstats {
 		display: table;
 		table-layout: fixed;
 		float: none;
-		width: 1000px;
-		width: 71.4285714rem;	
+		/*width: 1000px;*/
+		/*width: 71.4285714rem;	*/
+		width: 100%;
 	}
-	#header-widget-area aside,
-	#footer-widget-area aside {
+	#header-widget-area aside {
 		display: table-cell;
 		text-align: center;
 	}
+
+	#footer-widget-area aside {
+		display: table-cell;
+	}
+	
+	#footer-widget-area aside {
+		width: 30%;
+		float: left;
+		padding-left: 4%;
+	}
+
+	#footer-widget-area aside:first-child {
+		padding-left: 0;
+	}
+
 	#footer-widget-area aside {
 		border-right: 1px dashed #3399CC;
 	}
-
+	
+	
 	#footer-widget-area aside:last-child {
 		border-right: none;
 	}
@@ -1692,6 +1720,8 @@ img#wpstats {
 		margin-bottom: 0;
 		box-shadow: none;
 	}
+
+	
 }
 
 

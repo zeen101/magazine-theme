@@ -11,8 +11,21 @@
 ?>
 	</div><!-- #main .wrapper -->
 	<footer id="colophon" role="contentinfo">
-		<?php get_sidebar( 'footer' ); ?>
 
+		<div id="footer-widget-area">
+			<?php if ( is_active_sidebar( 'footer-widget-1' ) ) : ?>
+				<?php dynamic_sidebar( 'footer-widget-1' ); ?>
+			<?php endif; ?>
+
+			<?php if ( is_active_sidebar( 'footer-widget-2' ) ) : ?>
+				<?php dynamic_sidebar( 'footer-widget-2' ); ?>
+			<?php endif; ?>
+
+			<?php if ( is_active_sidebar( 'footer-widget-3' ) ) : ?>
+				<?php dynamic_sidebar( 'footer-widget-3' ); ?>
+			<?php endif; ?>
+		</div>
+		
 		<nav id="footer-navigation" class="footer-navigation" role="navigation">
 			<h3 class="menu-toggle"><?php _e( 'Menu', 'issuem-magazine' ); ?></h3>
 			<a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'issuem-magazine' ); ?>"><?php _e( 'Skip to content', 'twentytwelve' ); ?></a>

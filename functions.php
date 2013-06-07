@@ -171,7 +171,7 @@ if ( ! function_exists( 'issuem_magazine_widgets_init' ) ) {
 	function issuem_magazine_widgets_init() {
 	
 		register_sidebar( array(
-			'name' => __( 'Header Widgets', 'middlebury' ),
+			'name' => __( 'Header Widgets', 'issuem' ),
 			'id' => 'header-widgets',
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' => "</aside>",
@@ -180,7 +180,7 @@ if ( ! function_exists( 'issuem_magazine_widgets_init' ) ) {
 		) );
 	
 		register_sidebar( array(
-			'name' => __( 'Primary Widgets', 'middlebury' ),
+			'name' => __( 'Primary Widgets', 'issuem' ),
 			'id' => 'primary-widgets',
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' => "</aside>",
@@ -189,8 +189,26 @@ if ( ! function_exists( 'issuem_magazine_widgets_init' ) ) {
 		) );
 	
 		register_sidebar( array(
-			'name' => __( 'Footer Widgets', 'middlebury' ),
-			'id' => 'footer-widgets',
+			'name' => __( 'Footer Widget 1', 'issuem' ),
+			'id' => 'footer-widget-1',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget' => "</aside>",
+			'before_title' => '<h3 class="widget-title">',
+			'after_title' => '</h3>',
+		) );
+
+		register_sidebar( array(
+			'name' => __( 'Footer Widget 2', 'issuem' ),
+			'id' => 'footer-widget-2',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget' => "</aside>",
+			'before_title' => '<h3 class="widget-title">',
+			'after_title' => '</h3>',
+		) );
+
+		register_sidebar( array(
+			'name' => __( 'Footer Widget 3', 'issuem' ),
+			'id' => 'footer-widget-3',
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' => "</aside>",
 			'before_title' => '<h3 class="widget-title">',
