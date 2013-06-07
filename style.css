@@ -729,6 +729,17 @@ footer[role="contentinfo"] a:hover {
 	text-transform: none;
 }
 
+.site-info {
+	max-width: 77.1429rem;
+	margin: 10px auto;
+	padding-left: 5px;
+	font-family: 'Droid Sans', sans-serif;
+}
+
+.site-info a {
+	text-decoration: none;
+}
+
 
 /* =Main content and comment content
 -------------------------------------------------------------- */
