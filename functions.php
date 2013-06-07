@@ -256,6 +256,11 @@ function issuem_magazine_scripts_styles() {
 		wp_enqueue_script( 'comment-reply' );
 
 	/*
+	 * Loads our theme javascript
+	 */
+	wp_enqueue_script( 'global', get_bloginfo('stylesheet_directory') . '/js/global.js', 'jquery' );
+
+	/*
 	 * Loads our theme stylesheets.
 	 */
 	wp_enqueue_style( 'issuem-magazine-style', get_stylesheet_uri() );

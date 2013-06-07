@@ -621,14 +621,23 @@ header hgroup,
 	font-size: 0.857142857rem;
 	line-height: 1.42857143;
 }
-.header-navigation a,
-.footer-navigation a {
-	color: #5e5e5e;
+#header-navigation a,
+#footer-navigation a {
+	color: #fff;
+	text-decoration: none;
+	font-family: 'Droid sans', sans-serif;
 }
 .header-navigation a:hover,
 .footer-navigation a:hover {
 	color: #21759b;
 }
+
+#header-navigation .nav-menu > ul,
+#footer-navigation .nav-menu > ul {
+	padding-bottom: 20px;
+
+}
+
 .header-navigation ul.nav-menu,
 .header-navigation div.nav-menu > ul,
 .footer-navigation ul.nav-menu,
@@ -640,6 +649,7 @@ header hgroup,
 .footer-navigation ul.nav-menu.toggled-on, {
 	display: inline-block;
 }
+
 
 /* Banner */
 section[role="banner"] {
@@ -1654,6 +1664,12 @@ img#wpstats {
 	.footer-navigation .current_page_ancestor > a {
 		color: #FFF;
 		font-weight: bold;
+	}
+
+	#header-navigation .nav-menu > ul,
+	#footer-navigation .nav-menu > ul {
+		padding-bottom: 0px;
+
 	}
 	.menu-toggle {
 		display: none;
