@@ -588,6 +588,12 @@ header hgroup,
 	line-height: 1.846153846;
 	color: #757575;
 }
+
+.site-header .widget-area .widget-title {
+	color: #ddd;
+	margin-bottom: 0;
+}
+
 #header-image {
 	display: block;
 	width: 100%;
