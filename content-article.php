@@ -17,7 +17,7 @@
 			<?php endif; // is_single() ?>
             <div class="entry-meta">
             <?php issuem_magazine_article_meta(); ?>
-            <?php edit_post_link( __( 'Edit', 'issuem-magazine' ), '<span class="edit-link"> | ', '</span>' ); ?>
+            <?php edit_post_link( __( 'Edit', 'issuem-magazine' ), '<span class="edit-link">', '</span>' ); ?>
             </div><!-- .entry-meta -->
 			<?php the_post_thumbnail( 'article-feature' ); ?>
 		</header><!-- .entry-header -->

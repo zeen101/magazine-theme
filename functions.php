@@ -461,7 +461,7 @@ if ( !function_exists( 'issuem_magazine_article_meta' ) ) {
 		if ( '' != $article_categories )
 			echo $article_categories;
 			
-		echo get_the_date();
+		
 	
 	}
 	
