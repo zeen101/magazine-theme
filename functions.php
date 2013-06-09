@@ -243,7 +243,7 @@ function issuem_magazine_theme_activate_license() {
 	
 		$api_params = array( 
 			'edd_action'	=> 'activate_license', 
-			'license_key'	=> $license_key, 
+			'license'		=> $license_key, 
 			'item_name'		=> urlencode( ISSUEM_THEME_NAME ) 
 		);
 		
@@ -282,7 +282,7 @@ function issuem_magazine_theme_deactivate_license() {
 		// data to send in our API request
 		$api_params = array( 
 			'edd_action'	=> 'deactivate_license', 
-			'license_key' 	=> $license_key, 
+			'license' 		=> $license_key, 
 			'item_name' 	=> urlencode( ISSUEM_THEME_NAME ) // the name of our product in EDD
 		);
 		
@@ -325,16 +325,16 @@ function issuem_magazine_update( $_transient_data ) {
 	// Now append to it information form your own API
 
 	$to_send = array( 
-		'slug' 			=> ISSUEM_MAGAZINE_THEME_SLUG,
-		'name'			=> ISSUEM_MAGAZINE_THEME_NAME,
-		'license_key' 	=> $license_key,
+		'slug'		=> ISSUEM_MAGAZINE_THEME_SLUG,
+		'name'		=> ISSUEM_MAGAZINE_THEME_NAME,
+		'license' 	=> $license_key,
 	);
 
 	$api_response = issuem_api_request( 'plugin_latest_version', $to_send );
 	
 	if( false !== $api_response && is_object( $api_response ) )
 		if( version_compare( $api_response->new_version, $_transient_data->checked[ISSUEM_MAGAZINE_THEME_SLUG], '>' ) )
-			$_transient_data->response[ISSUEM_MAGAZINE_THEME_SLUG] = $api_response;
+			$_transient_data->response[ISSUEM_MAGAZINE_THEME_SLUG] = (array)$api_response;
 	
 	return $_transient_data;
 	
