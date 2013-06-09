@@ -144,8 +144,8 @@ function issuem_magazine_update( $transient ) {
 		
 	// POST data to send to your API
 	$args = array(
-		'action' 		=> 'check-latest-version',
-		'theme_slug' 	=> $theme_slug
+		'action'	=> 'check-latest-version',
+		'slug'		=> $theme_slug
 	);
 	
 	// Send request checking for an update
