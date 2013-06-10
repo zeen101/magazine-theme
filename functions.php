@@ -21,6 +21,7 @@
  * @since 1.0.0
  */
  
+define( 'ISSUEM_MAGAZINE_THEME_NAME', 		'IssueM Magazine Theme' );
 define( 'ISSUEM_MAGAZINE_THEME_SLUG', 		'issuem-magazine' );
 define( 'ISSUEM_MAGAZINE_THEME_VERSION',	'1.0.0' );
 define( 'ISSUEM_MAGAZINE_THEME_URL', 		get_template_directory_uri() );
@@ -97,31 +98,213 @@ if ( ! function_exists( 'issuem_magazine_setup' ) ) {
 			}
 			
 		}
-		
-		if ( !function_exists( 'activate_issuem_admin_notice' ) ) {
-		
-			/**
-			 * Helper function used print error nag if IssueM is not activated
-			 *
-			 * @since 1.0.0
-			 */
-			function activate_issuem_admin_notice() {
-			
-				?>
-				
-				<div class="error">
-					<p><?php _e( "Error! You must have the IssueM plugin activated to use IssueM's Magazine Theme.", 'issuem-magazine' ); ?></p>
-				</div>
-				
-				<?php
-				
-			}
-			
-		}
 
 	}
 	add_action( 'after_setup_theme', 'issuem_magazine_setup' );
 	
+}
+
+if ( !function_exists( 'activate_issuem_admin_notice' ) ) {
+
+	/**
+	 * Helper function used print error nag if IssueM is not activated
+	 *
+	 * @since 1.0.0
+	 */
+	function activate_issuem_admin_notice() {
+	
+		?>
+		
+		<div class="error">
+			<p><?php _e( "Error! You must have the IssueM plugin activated to use IssueM's Magazine Theme.", 'issuem-magazine' ); ?></p>
+		</div>
+		
+		<?php
+		
+	}
+	
+}
+
+if ( !function_exists( 'issuem_magazine_theme_menu' ) ) {
+
+	function issuem_magazine_theme_menu() {
+		
+		add_theme_page( __( 'Theme License', 'issuem-magazine-theme' ), __( 'Theme License', 'issuem-magazine-theme' ), 'manage_options', 'issuem-magazine-theme-license', 'issuem_magazine_theme_license_page' );
+		
+	}
+	add_action( 'admin_menu', 'issuem_magazine_theme_menu' );
+
+}
+
+if ( !function_exists( 'issuem_magazine_theme_license_page' ) ) {
+
+	function issuem_magazine_theme_license_page() {
+	
+	$license_key 	= get_option( 'issuem_magazine_theme_license_key' );
+	$license_status = get_option( 'issuem_magazine_theme_license_key_status' );
+	?>
+	<div class="wrap">
+    <div style="width:70%;" class="postbox-container">
+    <div class="metabox-holder">	
+    <div class="meta-box-sortables ui-sortable">
+
+        <h2 style='margin-bottom: 10px;' ><?php _e( 'IssueM Magazine Theme Settings', 'issuem-leaky-paywall' ); ?></h2>
+
+        <div id="license-key" class="postbox">
+        
+            <div class="handlediv" title="Click to toggle"><br /></div>
+            
+            <h3 class="hndle"><span><?php _e( 'License Key', 'issuem' ); ?></span></h3>
+            
+            <div class="inside">
+                    
+            <form method="post" action="options.php">
+
+			<?php settings_fields( 'issuem_magazine_theme_license' ); ?>
+
+			<table class="form-table">
+				<tbody>
+					<tr valign="top">	
+						<th scope="row" valign="top">
+							<?php _e('License Key'); ?>
+						</th>
+						<td>
+							<input id="issuem_magazine_theme_license_key" name="issuem_magazine_theme_license_key" type="text" class="regular-text" value="<?php esc_attr_e( $license_key ); ?>" />
+                        
+                            <?php if( $license_status !== false && $license_status == 'valid' ) { ?>
+                                <span style="color:green;"><?php _e('active'); ?></span>
+                                <input type="submit" class="button-secondary" name="issuem_magazine_theme_license_deactivate" value="<?php _e( 'Deactivate License', 'issuem-magazine-theme' ); ?>"/>
+                            <?php } else { ?>
+                                <input type="submit" class="button-secondary" name="issuem_magazine_theme_license_activate" value="<?php _e( 'Activate License', 'issuem-magazine-theme' ); ?>"/>
+                            <?php } ?>
+                            <?php wp_nonce_field( 'verify', 'license_wpnonce' ); ?>
+                        </td>
+                    </tr>
+				</tbody>
+			</table>	
+			<?php submit_button(); ?>
+            
+            </div>
+            
+            </form>
+        
+        </div>
+    
+    </div>
+    </div>
+    </div>
+    </div>
+	<?php		
+	}
+	
+}
+
+
+function issuem_magazine_theme_register_option() {
+		
+	// creates our settings in the options table
+	register_setting( 'issuem_magazine_theme_license', 'issuem_magazine_theme_license_key', 'issuem_magazine_theme_sanitize_license' );
+
+	register_setting( 'issuem_magazine_theme_license', 'issuem_magazine_theme_license_status', 'issuem_magazine_theme_sanitize_license_status' );
+
+	
+}
+add_action( 'admin_init', 'issuem_magazine_theme_register_option' );
+
+
+function issuem_magazine_theme_sanitize_license( $new ) {
+		
+	$old = get_option( 'issuem_magazine_theme_license_key' );
+	if( $old && $old != $new ) {
+		delete_option( 'issuem_magazine_theme_license_key_status' ); // new license has been entered, so must reactivate
+	}
+	return $new;
+	
+}
+
+function issuem_magazine_theme_sanitize_license_status( $new ) {
+
+	issuem_magazine_theme_activate_license();
+	issuem_magazine_theme_deactivate_license();
+	
+	return $new;
+	
+}
+
+
+function issuem_magazine_theme_activate_license() {
+
+	if( isset( $_REQUEST['issuem_magazine_theme_license_activate'] ) ) { 
+	
+	 	if( ! check_admin_referer( 'verify', 'license_wpnonce' ) ) 	
+			return; // get out if we didn't click the Activate button
+
+		$license_key = trim( get_option( 'issuem_magazine_theme_license_key' ) );
+	
+		$api_params = array( 
+			'edd_action'	=> 'activate_license', 
+			'license'		=> $license_key, 
+			'item_name'		=> urlencode( ISSUEM_THEME_NAME ) 
+		);
+		
+		$response = wp_remote_get( add_query_arg( $api_params, ISSUEM_STORE_URL ), array( 'timeout' => 15, 'sslverify' => false ) );
+
+		if ( is_wp_error( $response ) )
+			return false;
+
+		$license_data = json_decode( wp_remote_retrieve_body( $response ) );
+		
+		// $license_data->license will be either "active" or "inactive"
+
+		update_option( 'issuem_magazine_theme_license_key_status', $license_data->license );
+
+	}
+}
+
+/***********************************************
+* Illustrates how to deactivate a license key.
+* This will descrease the site count
+***********************************************/
+
+function issuem_magazine_theme_deactivate_license() {
+
+	// listen for our activate button to be clicked
+	if( isset( $_REQUEST['issuem_magazine_theme_license_deactivate'] ) ) {
+
+		// run a quick security check 
+	 	if( ! check_admin_referer( 'verify', 'license_wpnonce' ) ) 	
+			return; // get out if we didn't click the Activate button
+
+		// retrieve the license from the database
+		$license_key = trim( get_option( 'issuem_magazine_theme_license_key' ) );
+			
+
+		// data to send in our API request
+		$api_params = array( 
+			'edd_action'	=> 'deactivate_license', 
+			'license' 		=> $license_key, 
+			'item_name' 	=> urlencode( ISSUEM_THEME_NAME ) // the name of our product in EDD
+		);
+		
+		// Call the custom API.
+		$response = wp_remote_get( add_query_arg( $api_params, ISSUEM_STORE_URL ), array( 'timeout' => 15, 'sslverify' => false ) );
+
+		// make sure the response came back okay
+		if ( is_wp_error( $response ) )
+			return false;
+
+		// decode the license data
+		$license_data = json_decode( wp_remote_retrieve_body( $response ) );
+		
+		// $license_data->license will be either "deactivated" or "failed"
+		if( $license_data->license == 'deactivated' ) {
+			
+			delete_option( 'issuem_magazine_theme_license_key' );
+			delete_option( 'issuem_magazine_theme_license_key_status' );
+			
+		}
+
+	}
 }
 
 /**
@@ -131,32 +314,29 @@ if ( ! function_exists( 'issuem_magazine_setup' ) ) {
  *
  * @param object $transient Transient object of theme updates
  */
-function issuem_magazine_update( $transient ) {
+function issuem_magazine_update( $_transient_data ) {
 
-	// Check if the transient contains the 'checked' information
-	// If no, just return its value without hacking it
-	if ( empty( $transient->checked ) )
-		return $transient;
-
+	if( empty( $_transient_data->checked ) ) 
+		return $_transient_data;
+		
+	$license_key = get_option( 'issuem_magazine_theme_license_key' );
+		
 	// The transient contains the 'checked' information
 	// Now append to it information form your own API
-	$theme_slug = ISSUEM_MAGAZINE_THEME_SLUG;
-		
-	// POST data to send to your API
-	$args = array(
-		'action' 		=> 'check-latest-version',
-		'theme_slug' 	=> $theme_slug
+
+	$to_send = array( 
+		'slug'		=> ISSUEM_MAGAZINE_THEME_SLUG,
+		'name'		=> ISSUEM_MAGAZINE_THEME_NAME,
+		'license' 	=> $license_key,
 	);
+
+	$api_response = issuem_api_request( 'plugin_latest_version', $to_send );
 	
-	// Send request checking for an update
-	$response = issuem_api_request( $args );
-					
-	// If there is a new version, modify the transient
-	if ( isset( $response->new_version ) )
-		if( version_compare( $response->new_version, $transient->checked[ISSUEM_MAGAZINE_THEME_SLUG], '>' ) )
-			$transient->response[ISSUEM_MAGAZINE_THEME_SLUG] = (array)$response;
+	if( false !== $api_response && is_object( $api_response ) )
+		if( version_compare( $api_response->new_version, $_transient_data->checked[ISSUEM_MAGAZINE_THEME_SLUG], '>' ) )
+			$_transient_data->response[ISSUEM_MAGAZINE_THEME_SLUG] = (array)$api_response;
 	
-	return $transient;
+	return $_transient_data;
 	
 }
 
