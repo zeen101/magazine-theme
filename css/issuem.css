@@ -71,8 +71,8 @@ h3.featured-thumb-title a:hover {
 
 .issuem-featured-article-thumbs-image {
 	display: inline-block;
-	margin-left: 30px;
-	margin-right: 30px;
+	margin-left: 20px;
+	margin-right: 20px;
 	vertical-align: top;
 	margin-bottom: 1.71429rem;
 }
@@ -194,6 +194,10 @@ p a.issuem_widget_issue_pdf_link {
 .issuem_articles_shortcode .issuem_article_title,
 .issuem_articles_shortcode .issuem_article_byline {
 	margin-bottom: 0px;	
+}
+
+.issuem_articles_shortcode .issuem_article_title {
+	line-height: 1.41429;
 }
 
 .issuem_articles_shortcode .issuem_article_link {
