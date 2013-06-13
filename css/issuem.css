@@ -38,6 +38,7 @@
 	display: block;
 	margin-bottom: 25px;
 	border: 1px solid #ddd;
+	overflow: hidden;
 }
 
 #issuem-featured-article-slideshowholder .ft-title {
@@ -45,6 +46,11 @@
 	padding-right: 5px;
     font-weight: bold;
 	line-height: 12pt;
+}
+
+.featured_slider_title {
+	display: block;
+	font-size: 2.04286rem;
 }
 
 #issuem-featured-article-thumbs-imageholder {

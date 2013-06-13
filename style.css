@@ -766,11 +766,8 @@ footer[role="contentinfo"] a:hover {
 	margin-bottom: 1.714285714rem;
 }
 .entry-header img.wp-post-image {
-	max-width: 100%;
-	margin-left: auto;
-	margin-right: auto;
-	display: block;
-	margin-bottom: 24px;
+	display: inline-block;
+	margin-right: 20px;
 	margin-bottom: 1.714285714rem;
 }
 .entry-header .entry-title {
@@ -889,6 +886,7 @@ article.sticky .featured-post {
 	margin: 0 0 24px;
 	margin: 0 0 1.714285714rem;
 	line-height: 1.714285714;
+	font-size: 1.4em;
 }
 .entry-content ul ul,
 .comment-content ul ul,
