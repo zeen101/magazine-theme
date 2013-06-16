@@ -33,7 +33,7 @@ add_filter( 'excerpt_more', 'issuem_article_excerpt_more' );
 <p class="issuem_article_content">%EXCERPT%</p>
 END;
 
-			echo do_shortcode( '[issuem_featured_rotator] [issuem_featured_thumbnails] [issuem_articles show_featured="0"]' . $article_format . '[/issuem_articles]' );
+			echo do_shortcode( '[issuem_issue_title] [issuem_featured_rotator] [issuem_featured_thumbnails] [issuem_articles show_featured="0"]' . $article_format . '[/issuem_articles]' );
 		}
 		?>
 		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>', 'after' => '</div>' ) ); ?>
