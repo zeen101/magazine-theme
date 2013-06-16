@@ -21,6 +21,10 @@
  * @since 1.0.0
  */
  
+//Define global variables...
+if ( !defined( 'ISSUEM_STORE_URL' ) )
+	define( 'ISSUEM_STORE_URL',					'http://issuem.com' );
+	
 define( 'ISSUEM_MAGAZINE_THEME_NAME', 		'IssueM Magazine Theme' );
 define( 'ISSUEM_MAGAZINE_THEME_SLUG', 		'issuem-magazine' );
 define( 'ISSUEM_MAGAZINE_THEME_VERSION',	'1.0.0' );
