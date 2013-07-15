@@ -19,7 +19,7 @@
             <?php issuem_magazine_article_meta(); ?>
             <?php edit_post_link( __( 'Edit', 'issuem-magazine' ), '<span class="edit-link">', '</span>' ); ?>
             </div><!-- .entry-meta -->
-			<?php the_post_thumbnail( 'article-feature' ); ?>
+			
 		</header><!-- .entry-header -->
 
 		<?php if ( is_search() ) : // Only display Excerpts for Search ?>
@@ -34,7 +34,6 @@
 		<?php endif; ?>
 
 		<footer class="entry-meta">
-			
 			
 			<?php if ( is_singular() && get_the_author_meta( 'description' ) && is_multi_author() ) : // If a user has filled out their description and this is a multi-author blog, show a bio on their entries. ?>
 				<div class="author-info">
