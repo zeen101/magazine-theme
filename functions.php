@@ -22,16 +22,16 @@
  */
  
 //Define global variables...
-if ( !defined( 'ISSUEM_STORE_URL' ) )
-	define( 'ISSUEM_STORE_URL',					'http://issuem.com' );
+if ( !defined( 'ZEEN101_STORE_URL' ) )
+	define( 'ZEEN101_STORE_URL',	'http://issuem.com' );
 	
-define( 'ISSUEM_MAGAZINE_THEME_NAME', 		'IssueM Magazine Theme' );
-define( 'ISSUEM_MAGAZINE_THEME_SLUG', 		'issuem-magazine' );
-define( 'ISSUEM_MAGAZINE_THEME_VERSION',	'1.0.0' );
-define( 'ISSUEM_MAGAZINE_THEME_URL', 		get_template_directory_uri() );
-define( 'ISSUEM_MAGAZINE_THEME_PATH', 		get_template_directory() );
-define( 'ISSUEM_MAGAZINE_THEME_BASENAME', 	wp_basename( __FILE__ ) );
-define( 'ISSUEM_MAGAZINE_THEME_REL_DIR', 	dirname( ISSUEM_MAGAZINE_THEME_BASENAME ) );
+define( 'ZEEN101_THEME_NAME', 		'IssueM Magazine Theme' );
+define( 'ZEEN101_THEME_SLUG', 		'issuem-magazine' );
+define( 'ZEEN101_THEME_VERSION',	'1.0.0' );
+define( 'ZEEN101_THEME_URL', 		get_template_directory_uri() );
+define( 'ZEEN101_THEME_PATH', 		get_template_directory() );
+define( 'ZEEN101_THEME_BASENAME', 	wp_basename( __FILE__ ) );
+define( 'ZEEN101_THEME_REL_DIR', 	dirname( ZEEN101_THEME_BASENAME ) );
 
 /**
  * Sets up the content width value based on the theme's design and stylesheet.
@@ -152,7 +152,7 @@ if ( !function_exists( 'issuem_magazine_theme_license_page' ) ) {
     <div class="metabox-holder">	
     <div class="meta-box-sortables ui-sortable">
 
-        <h2 style='margin-bottom: 10px;' ><?php _e( 'IssueM Magazine Theme Settings', 'issuem-leaky-paywall' ); ?></h2>
+        <h2 style='margin-bottom: 10px;' ><?php _e( 'IssueM Magazine Theme Settings', 'issuem-magazine-theme' ); ?></h2>
 
         <div id="license-key" class="postbox">
         
@@ -248,10 +248,10 @@ function issuem_magazine_theme_activate_license() {
 		$api_params = array( 
 			'edd_action'	=> 'activate_license', 
 			'license'		=> $license_key, 
-			'item_name'		=> urlencode( ISSUEM_THEME_NAME ) 
+			'item_name'		=> urlencode( ZEEN101_THEME_NAME ) 
 		);
 		
-		$response = wp_remote_get( add_query_arg( $api_params, ISSUEM_STORE_URL ), array( 'timeout' => 15, 'sslverify' => false ) );
+		$response = wp_remote_get( add_query_arg( $api_params, ZEEN101_STORE_URL ), array( 'timeout' => 15, 'sslverify' => false ) );
 
 		if ( is_wp_error( $response ) )
 			return false;
@@ -287,11 +287,11 @@ function issuem_magazine_theme_deactivate_license() {
 		$api_params = array( 
 			'edd_action'	=> 'deactivate_license', 
 			'license' 		=> $license_key, 
-			'item_name' 	=> urlencode( ISSUEM_THEME_NAME ) // the name of our product in EDD
+			'item_name' 	=> urlencode( ZEEN101_THEME_NAME ) // the name of our product in EDD
 		);
 		
 		// Call the custom API.
-		$response = wp_remote_get( add_query_arg( $api_params, ISSUEM_STORE_URL ), array( 'timeout' => 15, 'sslverify' => false ) );
+		$response = wp_remote_get( add_query_arg( $api_params, ZEEN101_STORE_URL ), array( 'timeout' => 15, 'sslverify' => false ) );
 
 		// make sure the response came back okay
 		if ( is_wp_error( $response ) )
@@ -329,16 +329,16 @@ function issuem_magazine_update( $_transient_data ) {
 	// Now append to it information form your own API
 
 	$to_send = array( 
-		'slug'		=> ISSUEM_MAGAZINE_THEME_SLUG,
-		'name'		=> ISSUEM_MAGAZINE_THEME_NAME,
+		'slug'		=> ZEEN101_THEME_SLUG,
+		'name'		=> ZEEN101_THEME_NAME,
 		'license' 	=> $license_key,
 	);
 
 	$api_response = issuem_api_request( 'plugin_latest_version', $to_send );
 	
 	if( false !== $api_response && is_object( $api_response ) )
-		if( version_compare( $api_response->new_version, $_transient_data->checked[ISSUEM_MAGAZINE_THEME_SLUG], '>' ) )
-			$_transient_data->response[ISSUEM_MAGAZINE_THEME_SLUG] = (array)$api_response;
+		if( version_compare( $api_response->new_version, $_transient_data->checked[ZEEN101_THEME_SLUG], '>' ) )
+			$_transient_data->response[ZEEN101_THEME_SLUG] = (array)$api_response;
 	
 	return $_transient_data;
 	
@@ -448,7 +448,7 @@ function issuem_magazine_scripts_styles() {
 	 * Loads our theme stylesheets.
 	 */
 	wp_enqueue_style( 'issuem-magazine-style', get_stylesheet_uri() );
-	wp_enqueue_style( 'issuem-specific-style', ISSUEM_MAGAZINE_THEME_URL . '/css/issuem.css', array( 'issuem-magazine-style' ), ISSUEM_MAGAZINE_THEME_VERSION );
+	wp_enqueue_style( 'issuem-specific-style', ZEEN101_THEME_URL . '/css/issuem.css', array( 'issuem-magazine-style' ), ZEEN101_THEME_VERSION );
 
 
 	/*
